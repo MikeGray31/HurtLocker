@@ -13,21 +13,25 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
         String output = (new Main()).readRawDataToString();
-        List<String> list = ModifyData.separateByHashtags(output);
-        List<String[]>listOfArrays = new ArrayList<>();
-        listOfArrays = ModifyData.correctNames(listOfArrays);
-        for(String s : list){ listOfArrays.add(ModifyData.separatePairs(s)); }
+        String[] array = ModifyData.separateByHashtags(output);
+        String[][] ArrayOfArrays = new String[array.length][];
+        for(int i =0; i < array.length; i++){
+            ArrayOfArrays[i] = ModifyData.separatePairs(array[i]);
+        }
+        ArrayOfArrays = ModifyData.correctStrings(ArrayOfArrays);
+        ArrayOfArrays = ModifyData.correctNames(ArrayOfArrays);
 
-        System.out.println(list);
+
+
 
         //for viewing purposes
-        for(String[] sa: listOfArrays){
+        for(String[] sa: ArrayOfArrays){
             for(int i = 0; i< sa.length; i++){
                 System.out.print(String.format("%22s|||",sa[i]));
             }
             System.out.print("\n");
         }
-        System.out.println(listOfArrays.size());
+        System.out.println(ArrayOfArrays.length);
 
     }
 }
