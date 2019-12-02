@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,14 +44,29 @@ public class ModifyData {
     }
 
 
-    public static List<Item> countItemOccurrences(String[][] data){
-        List<Item> results = new ArrayList<>();
-//        for (String[] sa: data) {
-//            if(results.contains()){
-//
-//            }
-//            Item i = new Item(sa[0], sa[1], sa[3]);
-//        }
+    public static Map<String, Item> countItemOccurrences(String[][] data){
+        Map<String ,Item> results = new LinkedHashMap<>();
+        for (int i = 0; i < data.length; i++) {
+            if(!(data[i][0].equals("") || data[i][1].equals(""))){
+                if(results.containsKey(data[i][0])){
+                    results.get(data[i][0]).incrementOccurrences();
+                    results.get(data[i][0]).addToPrices(data[i][1]);
+                }
+                else {
+                    results.put(data[i][0], new Item(data[i][0], data[i][1]));
+                }
+            }
+        }
         return results;
+    }
+
+    public static Integer countErrors(String[][] data){
+        int counter = 0;
+        for (int i = 0; i < data.length; i++) {
+            if(data[i][0].equals("") || data[i][1].equals("")){
+                counter++;
+            }
+        }
+        return counter;
     }
 }

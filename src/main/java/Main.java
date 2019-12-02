@@ -2,6 +2,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -20,18 +21,14 @@ public class Main {
         }
         ArrayOfArrays = ModifyData.correctStrings(ArrayOfArrays);
         ArrayOfArrays = ModifyData.correctNames(ArrayOfArrays);
+        Map<String, Item> items = ModifyData.countItemOccurrences(ArrayOfArrays);
 
-
-
-
-        //for viewing purposes
-        for(String[] sa: ArrayOfArrays){
-            for(int i = 0; i< sa.length; i++){
-                System.out.print(String.format("%22s|||",sa[i]));
-            }
-            System.out.print("\n");
+        StringBuilder s = new StringBuilder();
+        for(Map.Entry<String, Item> item : items.entrySet()){
+            s.append(item.getValue().toString());
         }
-        System.out.println(ArrayOfArrays.length);
+        s.append(String.format("%.13s%10s%13s", "Errors", "", "seen: " + ModifyData.countErrors(ArrayOfArrays)) + " times");
 
+        System.out.println(s.toString());
     }
 }
