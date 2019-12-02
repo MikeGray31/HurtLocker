@@ -13,12 +13,12 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
         String output = (new Main()).readRawDataToString();
-        List<String> list = SeparateData.separateByHashtags(output);
+        List<String> list = ModifyData.separateByHashtags(output);
         List<String[]>listOfArrays = new ArrayList<>();
-        for(String s : list){
-            listOfArrays.add(SeparateData.separatePairs(s));
-        }
+        listOfArrays = ModifyData.correctNames(listOfArrays);
+        for(String s : list){ listOfArrays.add(ModifyData.separatePairs(s)); }
 
+        System.out.println(list);
 
         //for viewing purposes
         for(String[] sa: listOfArrays){
@@ -27,5 +27,7 @@ public class Main {
             }
             System.out.print("\n");
         }
+        System.out.println(listOfArrays.size());
+
     }
 }
