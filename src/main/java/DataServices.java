@@ -44,7 +44,7 @@ public class DataServices {
     }
 
 
-    public static Map<String, Item> countItemOccurrences(String[][] data){
+    public static Map<String, Item> countItems(String[][] data){
         Map<String ,Item> results = new LinkedHashMap<>();
         for (int i = 0; i < data.length; i++) {
             if(!(data[i][0].equals("") || data[i][1].equals(""))){

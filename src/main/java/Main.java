@@ -1,5 +1,4 @@
 import org.apache.commons.io.IOUtils;
-import java.io.IOException;
 import java.util.Map;
 
 public class Main {
@@ -19,7 +18,7 @@ public class Main {
         }
         ArrayOfArrays = DataServices.correctStrings(ArrayOfArrays);
         ArrayOfArrays = DataServices.correctNames(ArrayOfArrays);
-        Map<String, Item> items = DataServices.countItemOccurrences(ArrayOfArrays);
+        Map<String, Item> items = DataServices.countItems(ArrayOfArrays);
 
         StringBuilder s = new StringBuilder();
         for(Map.Entry<String, Item> item : items.entrySet()){

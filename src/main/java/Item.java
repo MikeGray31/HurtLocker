@@ -15,16 +15,8 @@ public class Item {
         prices.add(price);
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void addToPrices(String price){
         this.prices.add(price);
-    }
-
-    public Integer getOccurrences() {
-        return occurrences;
     }
 
     public void incrementOccurrences() {
@@ -44,6 +36,7 @@ public class Item {
         return results;
     }
 
+    @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
         String sEquals = String.format("=============          =============\n");
