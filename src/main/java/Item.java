@@ -49,7 +49,6 @@ public class Item {
         String sEquals = String.format("=============          =============\n");
         String sDashes = String.format("-------------          -------------\n");
 
-
         if(this.occurrences == 1){ str.append(String.format("%13s%10s%13s\n", "name: " + this.name, "", "seen: " + this.occurrences + " time")); }
         else{ str.append(String.format("%13s%10s%13s\n", "name: " + this.name, "", "seen: " + this.occurrences + " times")); }
         str.append(sEquals);

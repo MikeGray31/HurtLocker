@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ModifyData {
+public class DataServices {
 
     public static String[] separateByHashtags(String rawData) {
         Pattern p = Pattern.compile("(##)");
